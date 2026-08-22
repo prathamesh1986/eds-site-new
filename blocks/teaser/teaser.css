@@ -1,0 +1,50 @@
+.teaser > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+  border: 1px solid #dadada;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.teaser .teaser-image {
+  line-height: 0;
+}
+
+.teaser .teaser-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.teaser .teaser-body {
+  padding: 8px 24px 24px;
+}
+
+.teaser .teaser-body :first-child {
+  margin-top: 0;
+}
+
+.teaser .teaser-body h2,
+.teaser .teaser-body h3,
+.teaser .teaser-body h4 {
+  margin-bottom: 8px;
+}
+
+@media (width >= 600px) {
+  .teaser > div {
+    grid-template-columns: 40% 1fr;
+    gap: 24px;
+  }
+
+  .teaser .teaser-image img {
+    height: 100%;
+    aspect-ratio: unset;
+  }
+
+  .teaser .teaser-body {
+    padding: 24px 24px 24px 0;
+  }
+}
