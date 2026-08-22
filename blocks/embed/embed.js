@@ -90,7 +90,11 @@ const loadEmbed = (block, link, autoplay) => {
 
 export default function decorate(block) {
   const placeholder = block.querySelector('picture');
-  const link = block.querySelector('a').href;
+  const anchor = block.querySelector('a');
+  let link = anchor ? anchor.href : block.textContent.trim();
+  if (!link) return;
+  // tolerate plain-text URLs authored without a protocol
+  if (!/^https?:\/\//i.test(link)) link = `https://${link}`;
   block.textContent = '';
 
   if (placeholder) {
