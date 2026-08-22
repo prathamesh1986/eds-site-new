@@ -1,0 +1,49 @@
+.breadcrumb {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+}
+
+.breadcrumb ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb li {
+  display: inline-block;
+  padding: 10px 5px;
+  text-transform: uppercase;
+}
+
+.breadcrumb li a {
+  color: #202020;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb li a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb li:first-child {
+  padding-left: 0;
+}
+
+.breadcrumb li::before {
+  content: "▶";
+  padding-right: 5px;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+  color: #ffea00;
+}
+
+.breadcrumb li:first-child::before {
+  content: none;
+}
