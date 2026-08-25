@@ -1,6 +1,16 @@
 footer {
   background-color: var(--dark-color);
+  color: #fff;
   font-size: var(--body-font-size-xs);
+}
+
+footer .footer a:any-link {
+  color: #fff;
+  text-decoration: underline;
+}
+
+footer .footer a:hover {
+  text-decoration: none;
 }
 
 footer .footer > div {
