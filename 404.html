@@ -41,14 +41,43 @@
       min-height: calc(100vh - var(--nav-height));
       display: flex;
       align-items: center;
+      text-align: center;
+      background: linear-gradient(180deg, #fff 0%, var(--light-color) 100%);
+    }
+
+    main.error .section {
+      margin: 0 auto;
+      padding: 48px 24px;
     }
 
     main.error .error-number {
-      width: 100%;
+      width: min(78%, 440px);
+      margin: 0 auto;
     }
 
     main.error .error-number text {
-      font-family: monospace;
+      font-family: var(--heading-font-family), monospace;
+      font-weight: 700;
+      fill: var(--link-color);
+    }
+
+    main.error .error-message {
+      margin: 4px 0 8px;
+      font-size: var(--heading-font-size-l);
+    }
+
+    main.error .error-description {
+      margin: 0 auto 28px;
+      max-width: 480px;
+      color: var(--dark-color);
+      font-size: var(--body-font-size-s);
+    }
+
+    main.error .button-container {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
   </style>
   <link rel="stylesheet" href="/styles/lazy-styles.css">
@@ -62,8 +91,12 @@
         <text x="0" y="17">404</text>
       </svg>
       <h2 class="error-message">Page Not Found</h2>
+      <p class="error-description">
+        The page you're looking for doesn't exist or may have moved.
+        Try heading back home or returning to the previous page.
+      </p>
       <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home</a>
+        <a href="/" class="button primary error-button-home">Go home</a>
       </p>
     </div>
   </main>
