@@ -8,6 +8,7 @@ indices:
       - '/drafts/**'
       - '/fragments/**'
       - '/tools/**'
+      - '/block-library/**'
     target: /query-index.json
     properties:
       # `path` and `lastModified` are added to every entry automatically.
