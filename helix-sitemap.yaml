@@ -1,0 +1,10 @@
+version: 1
+
+sitemaps:
+  default:
+    # origin is used to build absolute URLs in the sitemap. Swap this for your
+    # final production hostname once a custom domain / CDN host is configured.
+    origin: https://main--eds-site-new--prathamesh1986.aem.live
+    source: /query-index.json
+    destination: /sitemap.xml
+    lastmod: YYYY-MM-DD
