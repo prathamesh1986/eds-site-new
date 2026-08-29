@@ -1,0 +1,11 @@
+{
+  "type": "doc",
+  "pluginRoot": "/home/node/.excat-marketplaces/excat-marketplace/excat",
+  "sites": {
+    "eds-site-new": {
+      "previewOrg": "prathamesh1986",
+      "previewSite": "eds-site-new",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

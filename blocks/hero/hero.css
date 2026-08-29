@@ -1,37 +1,109 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
-}
+/* Hero — CTA banner card with background image, gradient overlay,
+   overlaid heading + subheading + single pill CTA.
+   Source: closing "See more" banner on https://wknd-trendsetters.site/
+   Decorated DOM: .hero.block > div(row1: image) + div(row2: content).
+   The card sits inside the default .section container (max-width 1200,
+   24px side padding), matching the source card width. */
 
-.hero {
+/* rounded overflow-clipped card; content (row 2) drives height, image is absolute */
+.hero.block {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  display: block;
+  overflow: hidden;
+  border-radius: 20px;
+  color: #fff;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
-}
-
-.hero picture {
+/* image row fills the card */
+.hero.block > div:first-child {
   position: absolute;
-  z-index: -1;
   inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+  z-index: 0;
+  margin: 0;
 }
 
-.hero img {
-  object-fit: cover;
+/* content row overlaid above image + gradient */
+.hero.block > div:last-child {
+  position: relative;
+  z-index: 2;
+  max-width: 672px;
+  margin: 0;
+  padding: 40px 24px;
+}
+
+.hero.block > div:first-child > div,
+.hero.block picture {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.hero.block picture img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+/* bottom-up darkening gradient behind the text (matches source .overlay) */
+.hero.block::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 0%) 60%);
+  pointer-events: none;
+}
+
+.hero.block h2 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hero.block p {
+  margin: 16px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+/* single CTA — authored as a plain link, styled as a white pill */
+.hero.block a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  background-color: #fff;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.hero.block a:any-link:hover {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: #000;
+  text-decoration: none;
 }
 
 @media (width >= 900px) {
-  .hero {
-    padding: 40px 32px;
+  .hero.block > div:last-child {
+    padding: 64px;
+  }
+
+  .hero.block h2 {
+    font-size: 56px;
   }
 }

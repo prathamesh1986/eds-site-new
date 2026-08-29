@@ -1,27 +1,112 @@
+/* Block: cards — CSS extracted from source computed styles (wknd-trendsetters.site)
+ * Two variants share this block on the homepage:
+ *   1. Article cards  — image + meta + title, bordered card (Latest articles)
+ *   2. Image gallery  — square 1:1 tiles, no body/border   (Style in every snapshot)
+ * The gallery cards are distinguished by an empty .cards-card-body.
+ */
+
+/* ---- Grid (mobile-first: 1 col -> 2 col -> 4 col) ---- */
 .cards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
+@media (width >= 600px) {
+  .cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---- Article card (default) ---- */
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
-}
-
-.cards .cards-card-body {
-  margin: 16px;
+  border: 1px solid rgb(232 232 232);
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: transparent;
 }
 
 .cards .cards-card-image {
   line-height: 0;
 }
 
-.cards > ul > li img {
+.cards .cards-card-image img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 274 / 171;
   object-fit: cover;
+}
+
+.cards .cards-card-body {
+  padding: 24px;
+}
+
+/* meta line: category pill + date */
+.cards .cards-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+
+.cards .cards-card-tag {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: rgb(244 254 139);
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.cards .cards-card-date {
+  font-size: var(--body-font-size-xs);
+  color: var(--link-color);
+}
+
+/* fallback for meta paragraphs not split into tag/date */
+.cards .cards-card-body p {
+  margin: 0 0 12px;
+  font-size: var(--body-font-size-xs);
+  color: var(--link-color);
+  text-transform: none;
+}
+
+.cards .cards-card-body h3 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.cards .cards-card-body h3 a:any-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* ---- Image gallery variant (empty card body) ---- */
+.cards > ul:has(.cards-card-body:empty) {
+  gap: 12px;
+}
+
+.cards > ul > li:has(.cards-card-body:empty) {
+  border: 0;
+  border-radius: 20px;
+}
+
+.cards > ul > li:has(.cards-card-body:empty) .cards-card-image img {
+  aspect-ratio: 1 / 1;
+}
+
+.cards .cards-card-body:empty {
+  display: none;
 }

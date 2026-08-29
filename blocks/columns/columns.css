@@ -1,33 +1,151 @@
+/* Block: columns — design migrated from https://wknd-trendsetters.site/ */
+
+/* The two instance variants below are scoped to mutually exclusive :has(h1) /
+   :has(h2) blocks, so their rule order does not create a real cascade conflict. */
+/* stylelint-disable no-descending-specificity */
+
+/* ---- Shared layout (mobile-first: stacked, natural DOM order) ---- */
 .columns > div {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 24px;
+}
+
+.columns picture {
+  display: block;
+  line-height: 0;
 }
 
 .columns img {
-  width: 100%;
-}
-
-.columns > div > div {
-  order: 1;
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
-}
-
-.columns > div > .columns-img-col img {
   display: block;
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* image-only columns render their picture(s) as covered 3:2 media */
+.columns .columns-img-col img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
 @media (width >= 900px) {
   .columns > div {
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+  }
+}
+
+/* ---- Instance 1: hero header (block contains an h1) ---- */
+.columns:has(h1) > div {
+  gap: 64px;
+}
+
+.columns:has(h1) h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.columns:has(h1) > div > div:first-child p {
+  margin: 24px 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* three stacked hero images: nested grid inside the image cell's paragraph */
+.columns:has(h1) .columns-img-col p {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.columns:has(h1) .columns-img-col p img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* two CTA links share one paragraph, so EDS does not auto-decorate them
+   as .button — style them as pill buttons to match the source */
+.columns:has(h1) > div > div:first-child p:has(a) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.columns:has(h1) > div > div:first-child p a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--text-color);
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.columns:has(h1) > div > div:first-child p a:any-link:first-child {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.columns:has(h1) > div > div:first-child p a:any-link:last-child {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.columns:has(h1) > div > div:first-child p a:any-link:hover {
+  text-decoration: none;
+}
+
+.columns:has(h1) > div > div:first-child p a:any-link:last-child:hover {
+  background-color: var(--light-color);
+}
+
+@media (width >= 900px) {
+  .columns:has(h1) h1 {
+    font-size: 56px;
   }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+  .columns:has(h1) .columns-img-col p {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---- Instance 2: case-study teaser (block contains an h2) ---- */
+.columns:has(h2) h2 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: normal;
+}
+
+/* text column beside the lead image */
+.columns:has(h2) .columns-img-col + div p {
+  margin: 12px 0 0;
+  font-size: 16px;
+}
+
+/* breadcrumb row (first paragraph, before the heading) */
+.columns:has(h2) .columns-img-col + div p:first-child {
+  margin: 0;
+}
+
+.columns:has(h2) .columns-img-col + div p:first-child a:any-link {
+  font-weight: 500;
+  color: var(--link-color);
+}
+
+.columns:has(h2) .columns-img-col + div p:first-child a:any-link:first-child {
+  color: var(--text-color);
+}
+
+/* byline meta (date / read time) */
+.columns:has(h2) .columns-img-col + div p:last-child {
+  color: var(--link-color);
+}
+
+@media (width >= 900px) {
+  .columns:has(h2) h2 {
+    font-size: 40px;
   }
 }
