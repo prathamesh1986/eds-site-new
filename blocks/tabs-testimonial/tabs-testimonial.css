@@ -1,0 +1,148 @@
+/* Block: tabs-testimonial — testimonial tab switcher
+   Values extracted from source computed styles (wknd-trendsetters.site). */
+
+.tabs-testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---------- Active testimonial panel (shown on top) ---------- */
+.tabs-testimonial .tabs-testimonial-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs-testimonial .tabs-testimonial-panel-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+/* panel image: 4/3, rounded, cover */
+.tabs-testimonial .tabs-testimonial-panel-image {
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.tabs-testimonial .tabs-testimonial-panel-image picture,
+.tabs-testimonial .tabs-testimonial-panel-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Tab menu (avatar row, below panel) ---------- */
+.tabs-testimonial .tabs-testimonial-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs-testimonial .tabs-testimonial-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  border: 1px solid rgb(232 232 232);
+  border-radius: 16px;
+  padding: 16px;
+  background-color: rgb(239 239 239);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.tabs-testimonial .tabs-testimonial-tab[aria-selected='true'] {
+  border-color: var(--text-color);
+  background-color: var(--light-color); /* rgb(245,245,245) */
+  cursor: default;
+}
+
+/* avatar: 48px circle */
+.tabs-testimonial .tabs-testimonial-tab-avatar {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.tabs-testimonial .tabs-testimonial-tab-avatar picture,
+.tabs-testimonial .tabs-testimonial-tab-avatar img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+}
+
+.tabs-testimonial .tabs-testimonial-tab-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.tabs-testimonial .tabs-testimonial-tab-info p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22.4px;
+  color: var(--text-color);
+}
+
+.tabs-testimonial .tabs-testimonial-tab-info strong {
+  font-weight: 700;
+}
+
+/* ---------- Panel typography ---------- */
+.tabs-testimonial .tabs-testimonial-panel-content {
+  padding: 0;
+}
+
+.tabs-testimonial .tabs-testimonial-panel-content p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+}
+
+/* name (first paragraph, carries the strong) */
+.tabs-testimonial .tabs-testimonial-panel-content p:first-child {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.tabs-testimonial .tabs-testimonial-panel-content p:first-child strong {
+  font-weight: 700;
+}
+
+/* role (second paragraph) */
+.tabs-testimonial .tabs-testimonial-panel-content p:nth-child(2) {
+  margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 25.6px;
+}
+
+/* quote (last paragraph) */
+.tabs-testimonial .tabs-testimonial-quote {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+/* ---------- Desktop ---------- */
+@media (width >= 900px) {
+  .tabs-testimonial .tabs-testimonial-panel-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tabs-testimonial .tabs-testimonial-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
